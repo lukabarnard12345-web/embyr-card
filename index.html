@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/lukab/Downloads/embyr-card_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luka Barnard — EMBYR</title>
+  <link href="./index_files/css2" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #1D9E75;
+      --dark:   #0C1F2C;
+      --sand:   #F5F2EC;
+      --coal:   #D95F1A;
+      --sand80: rgba(245,242,236,0.08);
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    /* subtle noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 390px;
+      background: var(--dark);
+      border: 1px solid rgba(29,158,117,0.18);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(29,158,117,0.08);
+      animation: rise 0.6s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Header band ── */
+    .card-header {
+      padding: 36px 32px 28px;
+      background: linear-gradient(150deg, #0f2a3a 0%, #0C1F2C 60%);
+      border-bottom: 1px solid rgba(29,158,117,0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: rise 0.6s 0.08s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .wordmark {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      color: var(--sand);
+      line-height: 1;
+    }
+
+    .identity {
+      animation: rise 0.6s 0.14s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .identity h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      color: var(--sand);
+      line-height: 1.15;
+    }
+
+    .identity .title {
+      margin-top: 5px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Contact list ── */
+    .contact-list {
+      padding: 20px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--sand80);
+      text-decoration: none;
+      color: var(--sand);
+      transition: color 0.2s;
+      animation: rise 0.5s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .contact-item:nth-child(1) { animation-delay: 0.18s; }
+    .contact-item:nth-child(2) { animation-delay: 0.24s; }
+    .contact-item:nth-child(3) { animation-delay: 0.30s; }
+
+    .contact-item:last-child { border-bottom: none; }
+
+    .contact-item:hover { color: var(--green); }
+    .contact-item:hover .icon-wrap { background: rgba(29,158,117,0.18); }
+
+    .icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(245,242,236,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .icon-wrap svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-label {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .contact-label .type {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.35);
+    }
+
+    .contact-label .value {
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    /* ── Save button ── */
+    .cta-wrap {
+      padding: 20px 32px 28px;
+      animation: rise 0.5s 0.36s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .save-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 24px;
+      background: var(--coal);
+      color: var(--sand);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: filter 0.2s, transform 0.15s;
+    }
+
+    .save-btn:hover  { filter: brightness(1.12); transform: translateY(-1px); }
+    .save-btn:active { transform: translateY(0); filter: brightness(0.95); }
+
+    .save-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--sand);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── Footer tagline ── */
+    .card-footer {
+      padding: 14px 32px 18px;
+      border-top: 1px solid rgba(29,158,117,0.12);
+      text-align: center;
+      font-size: 11px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,242,236,0.3);
+      letter-spacing: 0.02em;
+      animation: rise 0.5s 0.42s cubic-bezier(0.16,1,0.3,1) both;
+    }
+  </style>
+<style type="text/css" id="operaUserStyle"></style></head>
+<body>
+
+<div class="card">
+
+  <!-- Header -->
+  <div class="card-header">
+    <div class="brand-row">
+      <!-- Locked EMBYR SVG mark -->
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 6L6 14V30L22 38L38 30V14" stroke="#1D9E75" stroke-width="3.2" stroke-linecap="round"></path>
+        <path d="M17 18.5C17 17.6716 17.6716 17 18.5 17H25.5C26.3284 17 27 17.6716 27 18.5V25.5C27 26.3284 26.3284 27 25.5 27H18.5C17.6716 27 17 26.3284 17 25.5V18.5Z" fill="#1D9E75"></path>
+        <circle cx="24.2" cy="5.2" r="3.2" fill="#D95F1A"></circle>
+      </svg>
+      <span class="wordmark">EMBYR</span>
+    </div>
+
+    <div class="identity">
+      <h1>Luka Barnard</h1>
+      <p class="title">Founder &amp; AI Business Consultant</p>
+    </div>
+  </div>
+
+  <!-- Contact rows -->
+  <div class="contact-list">
+
+    <a class="contact-item" href="tel:+27825941257">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.11h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 5.35 5.35l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </div>
+      <div class="contact-label">
+        <span class="type">Phone</span>
+        <span class="value">082 594 1257</span>
+      </div>
+    </a>
+
+    <a class="contact-item" href="mailto:luka@embyr.co.za">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </div>
+      <div class="contact-label">
+        <span class="type">Email</span>
+        <span class="value">luka@embyr.co.za</span>
+      </div>
+    </a>
+
+    <a class="contact-item" href="https://embyr.co.za/" target="_blank" rel="noopener">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      </div>
+      <div class="contact-label">
+        <span class="type">Website</span>
+        <span class="value">embyr.co.za</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Save Contact CTA -->
+  <div class="cta-wrap">
+    <a class="save-btn" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3ALuka%20Barnard%0AORG%3AEMBYR%0ATITLE%3AFounder%20%26%20AI%20Business%20Consultant%0ATEL%3BTYPE%3DCELL%3A%2B27825941257%0AEMAIL%3Aluka%40embyr.co.za%0AURL%3Ahttps%3A%2F%2Fembyr.co.za%0AEND%3AVCARD" download="Luka_Barnard_EMBYR.vcf">
+      <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+      Save Contact
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <div class="card-footer">
+    Speaks your language. Grows your business.
+  </div>
+
+</div>
+
+
+
+</body></html>
